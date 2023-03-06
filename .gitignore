@@ -1,0 +1,8 @@
+# *
+.DS_Store
+node_modules
+package-lock.json
+# Media
+assets/*.mp4
+assets/*.m3u8
+assets/*.ts

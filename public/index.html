@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming HLS</title>
+</head>
+<body>
+    <video id="video" width="500" height="500" controls></video>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.min.js" integrity="sha512-js37JxjD6gtmJ3N2Qzl9vQm4wcmTilFffk0nTSKzgr3p6aitg73LR205203wTzCCC/NZYO2TAxSa0Lr2VMLQvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const video = document.getElementById("video");
+        const videoSource = "/assets/ungine-real-test.m3u8";
+
+        if(Hls.isSupported()){
+            const hls = new Hls();
+            
+            hls.loadSource(videoSource);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                video.muted = true;
+                video.play();
+            });
+
+        } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+            video.src = videoSource;
+            video.addEventListener('canplay', function () {
+                video.muted = true;
+                video.play();
+            });
+        }
+    </script>
+</body>
+</html>

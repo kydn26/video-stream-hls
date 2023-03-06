@@ -1,0 +1,20 @@
+{
+  "name": "video-stream-hls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "gen:m3u8": "node ffmpeg.js",
+    "remove:m3u8": "rm ffmpeg.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "express": "^4.18.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "hls-server": "^1.5.0"
+  }
+}
